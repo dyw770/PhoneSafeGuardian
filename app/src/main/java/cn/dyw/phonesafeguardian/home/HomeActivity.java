@@ -1,6 +1,7 @@
 package cn.dyw.phonesafeguardian.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import cn.dyw.phonesafeguardian.R;
+import cn.dyw.phonesafeguardian.guard.GuardActivity;
 import cn.dyw.phonesafeguardian.home.adapter.HomeAdapter;
 import cn.dyw.phonesafeguardian.home.utils.MD5Utils;
 import cn.dyw.phonesafeguardian.home.widget.InterPasswordDialog;
@@ -129,6 +131,8 @@ public class HomeActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(dialog.getPassword())){
                     if(isPwd(dialog.getPassword())){
                         dialog.dismiss();
+                        Intent intent = new Intent(HomeActivity.this, GuardActivity.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(HomeActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
                     }
